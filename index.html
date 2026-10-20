@@ -1,202 +1,637 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Misi Harta Karun Aztec</title>
+
 <style>
-:root{--bg:#F4E8CC;--sf:#FAF3E0;--tx:#2B1D10;--mu:#6B5440;--br:#5C381E;--bd:#D9C7A0;--gold:#F0B428;--teal:#176E6E;--org:#CD6428;--on:#fff;--ok:#1F7A3F;--er:#A8321A;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1E1710;--sf:#2A2118;--tx:#F1E6D0;--mu:#BBA98D;--br:#E8C98F;--bd:#4A3A28;--teal:#4FB3B3;--ok:#6FD08C;--er:#FF9B85}}
-:root[data-theme="dark"]{--bg:#1E1710;--sf:#2A2118;--tx:#F1E6D0;--mu:#BBA98D;--br:#E8C98F;--bd:#4A3A28;--teal:#4FB3B3;--ok:#6FD08C;--er:#FF9B85}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.w{max-width:520px;margin:0 auto;padding:16px}
-h1{font-size:22px;margin:0;color:var(--br);line-height:1.2}
-.sub{color:var(--mu);font-size:14px;margin:4px 0 14px}
-.c{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
-input[type=text],select{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);min-height:44px}
-label.l{font-size:13px;color:var(--mu);display:block;margin-bottom:4px}
-.row{display:flex;gap:10px}.row>div{flex:1}
-.big{font-size:32px;font-weight:700;color:var(--br);line-height:1}
-.coin{display:inline-block;width:20px;height:20px;border-radius:50%;background:var(--gold);border:2px solid var(--br);vertical-align:middle}
-.bar{height:10px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;overflow:hidden;margin-top:10px}
-.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .25s}
-#peti{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--bg);font-size:15px}
-#peti.ok{background:var(--gold);color:#2B1D10;font-weight:600}
-svg.map{width:100%;height:auto;display:block}
-.nd{cursor:pointer}.nd:focus{outline:none}.nd:focus-visible circle.m{stroke:var(--org);stroke-width:4}
-.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.chips button,.tabs button{font:inherit;font-size:13px;padding:8px 2px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);min-height:44px}
-.chips button[aria-pressed=true],.tabs button[aria-pressed=true]{background:var(--teal);color:var(--on);border-color:var(--teal)}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
-h2{font-size:18px;margin:0 0 2px;color:var(--br)}
-h3{font-size:14px;margin:14px 0 6px;color:var(--teal);display:flex;justify-content:space-between}
-.ck{display:flex;gap:10px;align-items:flex-start;padding:8px 0;min-height:44px;border-top:1px solid var(--bd);cursor:pointer}
-.ck input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--teal);flex:none}
-button.b{font:inherit;padding:10px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);min-height:44px}
-button.p{background:var(--teal);color:var(--on);border-color:var(--teal);font-weight:600}
-button.d{border-color:var(--org);color:var(--org)}
-#msg{margin-top:10px;font-size:14px;min-height:20px}.okm{color:var(--ok)}.erm{color:var(--er)}
-video{width:100%;max-height:260px;border-radius:10px;background:#000;margin-top:10px;display:none}
-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
-th,td{padding:6px 4px;border-top:1px solid var(--bd);text-align:center}th:first-child,td:first-child{text-align:left;width:34%}
-.qg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.qg div{background:#fff;border-radius:10px;padding:8px;text-align:center;color:#222;font-size:12px}
-.qg svg{width:100%;height:auto;display:block}
-.note{font-size:13px;color:var(--mu);text-align:center;margin:6px 0 0}
-details summary{cursor:pointer;font-weight:600;color:var(--br);min-height:32px}
+:root {
+  --bg: #F4E8CC;
+  --card: #FAF3E0;
+  --text: #2B1D10;
+  --brown: #5C381E;
+  --border: #D9C7A0;
+  --gold: #F0B428;
+  --teal: #176E6E;
+  --green: #1F7A3F;
+  --red: #A8321A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: var(--brown);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 11px 14px;
+  margin: 5px 3px 5px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff8e8;
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--teal);
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pos-button {
+  width: 100%;
+  text-align: left;
+}
+
+.pos-button.active {
+  background: var(--teal);
+  color: white;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.check input {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+}
+
+.gold {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--brown);
+}
+
+.progress {
+  height: 12px;
+  background: #e4d5b6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+}
+
+.message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+
+.success {
+  color: var(--green);
+}
+
+.error {
+  color: var(--red);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th, td {
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.qr-box {
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  color: #222;
+}
+
+.qr-box img {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
+.small {
+  font-size: 13px;
+  color: #6B5440;
+}
 </style>
 </head>
+
 <body>
-<div class="w">
-<h1>Misi Harta Karun Aztec</h1>
-<p class="sub">Pindai kode pos, selesaikan tantangan, kumpulkan kepingan emas.</p>
+<div class="container">
 
-<div class="c">
-<div class="row">
-<div><label class="l" for="tim">Nama tim</label><input type="text" id="tim" placeholder="Contoh: Tim Elang" maxlength="30"></div>
-<div style="max-width:96px"><label class="l" for="nt">Tim no.</label><select id="nt"></select></div>
-<div style="max-width:112px"><label class="l" for="tg">Syarat peti</label><select id="tg"><option value="16">16 emas</option><option value="20">20 emas</option><option value="24">24 emas</option></select></div>
-</div>
-</div>
+<h1>🏆 Misi Harta Karun Aztec</h1>
+<p>Selesaikan tantangan olahraga, kumpulkan kepingan emas, dan buka peti harta karun!</p>
 
-<div class="c">
-<div class="l" style="font-size:13px;color:var(--mu);margin-bottom:6px">Ronde dan rute tim</div>
-<div class="chips" id="rd"></div>
-<div id="rt" style="margin-top:10px;font-size:15px"></div>
-<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="b p" id="sc">Pindai kode pos</button><button class="b" id="st" style="display:none">Tutup kamera</button></div>
-<video id="vd" playsinline muted></video>
-<div class="row" style="margin-top:10px;align-items:flex-end"><div><label class="l" for="kd">Atau ketik kode pos (mis. AZTEC-POS-2)</label><input type="text" id="kd" autocapitalize="characters" autocomplete="off"></div><div style="flex:none"><button class="b" id="ck">Cek kode</button></div></div>
-<div id="msg" aria-live="polite"></div>
-</div>
+<div class="card">
+  <h2>Identitas Tim</h2>
 
-<div class="c">
-<svg class="map" viewBox="0 0 320 270" role="img" aria-label="Peta empat pos">
-<path d="M55 95 L120 190 L210 105 L265 195" fill="none" stroke="var(--br)" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/>
-<g id="mp"></g>
-</svg>
-<div class="tabs" id="tabs"></div>
-</div>
+  <label for="tim">Nama Tim</label>
+  <input type="text" id="tim" placeholder="Contoh: Tim Elang" maxlength="30">
 
-<div class="c" id="pn"></div>
+  <label for="nomorTim">Nomor Tim</label>
+  <select id="nomorTim">
+    <option value="1">Tim 1</option>
+    <option value="2">Tim 2</option>
+    <option value="3">Tim 3</option>
+    <option value="4">Tim 4</option>
+    <option value="5">Tim 5</option>
+    <option value="6">Tim 6</option>
+  </select>
 
-<div class="c">
-<div style="display:flex;align-items:center;gap:10px"><span class="coin" aria-hidden="true"></span><span class="big" id="tt">0</span><span style="color:var(--mu)">dari 28 kepingan</span></div>
-<div class="bar" aria-hidden="true"><i id="pb"></i></div>
-<div id="peti" aria-live="polite"></div>
-<table style="margin-top:12px"><thead><tr><th>Pos</th><th>Teknik</th><th>Tant.</th><th>Kerja</th><th>Emas</th></tr></thead><tbody id="rk"></tbody></table>
+  <label for="target">Target Emas untuk Membuka Peti</label>
+  <select id="target">
+    <option value="16">16 kepingan emas</option>
+    <option value="20" selected>20 kepingan emas</option>
+    <option value="24">24 kepingan emas</option>
+  </select>
 </div>
 
-<div class="c"><details><summary>Untuk guru: kode QR dan rute semua tim</summary>
-<p style="font-size:13px;color:var(--mu)">Cetak dan tempel satu kode di setiap pos. Rute tiap tim ditetapkan berputar (bukan acak), ronde 4 selalu Gerbang Kuil.</p>
-<div class="qg" id="qg"></div>
-<table style="margin-top:12px"><thead><tr><th>Tim</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th></tr></thead><tbody id="ru"></tbody></table>
-</details></div>
+<div class="card">
+  <h2>Pilih Pos Misi</h2>
+  <p class="small">
+    Pilih pos yang akan dikerjakan. Penilaian keterampilan dilakukan oleh guru.
+  </p>
 
-<div style="display:flex;gap:8px;align-items:center"><button class="b d" id="rs">Mulai ulang</button><span id="cf" style="display:none"><button class="b d" id="ya">Ya, hapus semua</button> <button class="b" id="tb">Batal</button></span></div>
-<p class="note">Emas dari teknik dan kerja sama, bukan keberuntungan.</p>
+  <div id="daftarPos"></div>
+  <div id="pesan" class="message" aria-live="polite"></div>
 </div>
+
+<div class="card">
+  <h2 id="judulPos">Pilih salah satu pos</h2>
+  <p id="deskripsiPos">Checklist penilaian akan muncul di sini.</p>
+
+  <div id="penilaian"></div>
+
+  <button class="primary" id="simpanNilai">
+    Simpan Nilai Pos
+  </button>
+</div>
+
+<div class="card">
+  <h2>Perolehan Emas</h2>
+
+  <div>
+    <span class="gold" id="total">0</span>
+    <span>dari 28 kepingan emas</span>
+  </div>
+
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <p id="statusPeti"></p>
+</div>
+
+<div class="card">
+  <h2>Rekap Nilai Tim</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pos</th>
+        <th>Teknik</th>
+        <th>Tantangan</th>
+        <th>Kerja Sama</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="rekap"></tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Kode QR Setiap Pos</h2>
+  <p class="small">
+    QR ini berisi kode pos. Murid dapat memindainya menggunakan aplikasi
+    pemindai QR, lalu memasukkan kode yang terbaca ke website.
+  </p>
+
+  <div class="qr-grid" id="daftarQR"></div>
+</div>
+
+</div>
+
 <script>
-var QR={"AZTEC-POS-1":{"n":21,"d":"M0 0h7v1h-7zM10 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h2v1h-2zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h4v1h-4zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h3v1h-3zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM0 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h2v1h-2zM12 8h1v1h-1zM16 8h1v1h-1zM19 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM7 9h3v1h-3zM11 9h1v1h-1zM15 9h1v1h-1zM17 9h2v1h-2zM0 10h1v1h-1zM3 10h1v1h-1zM5 10h7v1h-7zM14 10h1v1h-1zM16 10h1v1h-1zM19 10h2v1h-2zM2 11h2v1h-2zM9 11h5v1h-5zM19 11h2v1h-2zM0 12h2v1h-2zM4 12h1v1h-1zM6 12h2v1h-2zM9 12h1v1h-1zM11 12h1v1h-1zM14 12h3v1h-3zM18 12h2v1h-2zM8 13h1v1h-1zM14 13h1v1h-1zM18 13h1v1h-1zM0 14h7v1h-7zM9 14h1v1h-1zM12 14h1v1h-1zM16 14h1v1h-1zM0 15h1v1h-1zM6 15h1v1h-1zM9 15h1v1h-1zM14 15h1v1h-1zM17 15h2v1h-2zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h3v1h-3zM12 16h1v1h-1zM14 16h2v1h-2zM17 16h4v1h-4zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM9 17h3v1h-3zM13 17h1v1h-1zM15 17h3v1h-3zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h2v1h-2zM13 18h3v1h-3zM17 18h2v1h-2zM20 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h3v1h-3zM16 19h1v1h-1zM19 19h2v1h-2zM0 20h7v1h-7zM8 20h1v1h-1zM11 20h1v1h-1zM13 20h2v1h-2zM16 20h1v1h-1zM20 20h1v1h-1z"},"AZTEC-POS-2":{"n":21,"d":"M0 0h7v1h-7zM8 0h1v1h-1zM10 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h5v1h-5zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h2v1h-2zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h3v1h-3zM12 4h1v1h-1zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM11 5h2v1h-2zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM10 7h3v1h-3zM0 8h1v1h-1zM3 8h6v1h-6zM10 8h1v1h-1zM12 8h2v1h-2zM16 8h1v1h-1zM18 8h3v1h-3zM2 9h1v1h-1zM4 9h2v1h-2zM8 9h2v1h-2zM12 9h1v1h-1zM16 9h1v1h-1zM19 9h2v1h-2zM0 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM9 10h1v1h-1zM14 10h2v1h-2zM17 10h1v1h-1zM19 10h2v1h-2zM0 11h2v1h-2zM4 11h1v1h-1zM7 11h1v1h-1zM9 11h3v1h-3zM15 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM1 12h2v1h-2zM6 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM13 12h2v1h-2zM16 12h3v1h-3zM8 13h5v1h-5zM15 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM8 14h1v1h-1zM10 14h1v1h-1zM12 14h5v1h-5zM19 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM8 15h6v1h-6zM15 15h2v1h-2zM19 15h2v1h-2zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h2v1h-2zM11 16h2v1h-2zM14 16h1v1h-1zM16 16h1v1h-1zM18 16h3v1h-3zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h2v1h-2zM11 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM10 18h1v1h-1zM14 18h1v1h-1zM18 18h3v1h-3zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h2v1h-2zM13 19h7v1h-7zM0 20h7v1h-7zM8 20h1v1h-1zM11 20h1v1h-1zM15 20h2v1h-2zM19 20h1v1h-1z"},"AZTEC-POS-3":{"n":21,"d":"M0 0h7v1h-7zM8 0h1v1h-1zM10 0h3v1h-3zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM11 2h2v1h-2zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h3v1h-3zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM12 4h1v1h-1zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM11 5h2v1h-2zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM9 7h1v1h-1zM11 7h2v1h-2zM0 8h1v1h-1zM3 8h7v1h-7zM12 8h2v1h-2zM16 8h1v1h-1zM18 8h3v1h-3zM0 9h3v1h-3zM4 9h1v1h-1zM12 9h2v1h-2zM16 9h1v1h-1zM19 9h2v1h-2zM0 10h1v1h-1zM3 10h2v1h-2zM6 10h1v1h-1zM8 10h2v1h-2zM14 10h2v1h-2zM17 10h1v1h-1zM19 10h2v1h-2zM0 11h1v1h-1zM4 11h2v1h-2zM8 11h2v1h-2zM11 11h1v1h-1zM15 11h2v1h-2zM18 11h1v1h-1zM20 11h1v1h-1zM5 12h4v1h-4zM13 12h2v1h-2zM16 12h3v1h-3zM8 13h1v1h-1zM10 13h3v1h-3zM15 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM8 14h1v1h-1zM12 14h5v1h-5zM19 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM8 15h6v1h-6zM15 15h2v1h-2zM19 15h2v1h-2zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h1v1h-1zM10 16h3v1h-3zM14 16h1v1h-1zM16 16h1v1h-1zM18 16h3v1h-3zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM10 17h3v1h-3zM17 17h2v1h-2zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM10 18h1v1h-1zM14 18h1v1h-1zM18 18h3v1h-3zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h2v1h-2zM13 19h7v1h-7zM0 20h7v1h-7zM8 20h1v1h-1zM11 20h1v1h-1zM15 20h2v1h-2zM19 20h1v1h-1z"},"AZTEC-POS-4":{"n":21,"d":"M0 0h7v1h-7zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h4v1h-4zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h1v1h-1zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h5v1h-5zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h3v1h-3zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM9 7h2v1h-2zM0 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM16 8h1v1h-1zM19 8h1v1h-1zM0 9h1v1h-1zM2 9h4v1h-4zM7 9h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM17 9h2v1h-2zM3 10h5v1h-5zM9 10h1v1h-1zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM19 10h2v1h-2zM1 11h1v1h-1zM5 11h1v1h-1zM8 11h1v1h-1zM10 11h4v1h-4zM19 11h2v1h-2zM2 12h6v1h-6zM10 12h2v1h-2zM14 12h3v1h-3zM18 12h2v1h-2zM8 13h1v1h-1zM10 13h1v1h-1zM14 13h1v1h-1zM18 13h1v1h-1zM0 14h7v1h-7zM12 14h1v1h-1zM16 14h1v1h-1zM0 15h1v1h-1zM6 15h1v1h-1zM14 15h1v1h-1zM17 15h2v1h-2zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM8 16h2v1h-2zM12 16h1v1h-1zM14 16h2v1h-2zM17 16h4v1h-4zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM11 17h1v1h-1zM13 17h1v1h-1zM15 17h3v1h-3zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM8 18h2v1h-2zM11 18h1v1h-1zM13 18h3v1h-3zM17 18h2v1h-2zM20 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h5v1h-5zM16 19h1v1h-1zM19 19h2v1h-2zM0 20h7v1h-7zM8 20h1v1h-1zM10 20h2v1h-2zM13 20h2v1h-2zM16 20h1v1h-1zM20 20h1v1h-1z"}};
-var POS=[
-{n:"Lembah Passing",s:"Passing",cek:["Kaki tumpu di samping bola","Bola dikenai kaki bagian dalam","Kaki mengikuti arah sasaran"],tan:["5 dari 8 passing melewati gerbang","3 passing berturut-turut ke teman tanpa bola lepas"]},
-{n:"Hutan Dribel",s:"Dribel",cek:["Bola dekat kaki dengan sentuhan ringan","Kepala tegak, melihat sekitar","Kontrol dengan kaki dalam dan luar"],tan:["Zig-zag 5 kerucut tanpa menyentuh kerucut","Ulangi dengan kaki yang satunya"]},
-{n:"Kuil Shooting",s:"Shooting",cek:["Kaki tumpu di samping bola","Bola dikenai punggung kaki","Badan condong ke depan, mata ke sasaran"],tan:["3 dari 6 tembakan masuk zona target","Setiap anggota tim menembak sekali"]},
-{n:"Gerbang Kuil",s:"Gerbang",cek:["Memakai passing yang tepat","Memakai dribel yang terkontrol","Mengakhiri dengan tembakan yang benar"],tan:["Tim mencetak gol setelah minimal 3 passing","Semua anggota menyentuh bola"]}];
-var KER=["Semua anggota mendapat giliran peran","Memberi umpan balik positif kepada teman"];
-var XY=[[55,95],[120,190],[210,105],[265,195]],LB=[-42,44,-42,44];
-var K="aztec-misi-v2",S,cur=0,stream=null,tmr=null;
-// Tempel URL Web App Google Apps Script yang berakhir /exec di bawah ini.
-var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-bqJPhnMf5XDXYPMAjN5Cfrd7S5QlXIgWA2b6lRyQ5_aG5TDY7p3bM5LnTP-oz_6d/exec";
-function kirimLog(pos, action){
-  if(!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(GOOGLE_SCRIPT_URL)){
-    say("Pos berhasil dibuka di perangkat ini, tetapi Google Sheets belum terhubung. Guru perlu memasukkan URL Apps Script pada file index.html.",0); return;
+/* =========================================
+   KONFIGURASI GOOGLE APPS SCRIPT
+   Ganti dengan URL Web App Anda yang berakhir /exec.
+========================================= */
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxwUJvulSxsRKXDrWzv87oyzwyQ1imY79A4Uot1KfSSPmQ4Xsc8nYw3PKE3fDmK3I2_/exec";
+
+const SESSION = "Misi Harta Karun Aztec";
+
+const POS = [
+  {
+    nama: "Lembah Passing",
+    teknik: [
+      "Kaki tumpu berada di samping bola",
+      "Bola dikenai kaki bagian dalam",
+      "Kaki mengikuti arah sasaran"
+    ],
+    tantangan: [
+      "5 dari 8 passing melewati gerbang",
+      "3 passing berturut-turut tanpa bola lepas"
+    ]
+  },
+  {
+    nama: "Hutan Dribel",
+    teknik: [
+      "Bola dekat dengan kaki",
+      "Kepala tegak dan melihat sekitar",
+      "Mengontrol bola dengan kaki bagian dalam dan luar"
+    ],
+    tantangan: [
+      "Menyelesaikan zig-zag 5 kerucut tanpa menyentuh kerucut",
+      "Mengulang dribel menggunakan kaki lainnya"
+    ]
+  },
+  {
+    nama: "Kuil Shooting",
+    teknik: [
+      "Kaki tumpu berada di samping bola",
+      "Bola dikenai punggung kaki",
+      "Badan condong ke depan dan mata melihat sasaran"
+    ],
+    tantangan: [
+      "3 dari 6 tembakan masuk zona target",
+      "Setiap anggota tim melakukan satu tembakan"
+    ]
+  },
+  {
+    nama: "Gerbang Kuil",
+    teknik: [
+      "Menggunakan passing yang tepat",
+      "Menggunakan dribel yang terkontrol",
+      "Mengakhiri dengan tembakan yang benar"
+    ],
+    tantangan: [
+      "Tim mencetak gol setelah minimal 3 passing",
+      "Semua anggota tim menyentuh bola"
+    ]
   }
-  var payload={action:action||"checkin",teamName:S.t,teamNo:S.n,pos:String(pos),session:"Misi Harta Karun Aztec"};
-  fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=UTF-8"},body:JSON.stringify(payload),keepalive:true})
-    .then(function(){say("Check-in dikirim ke Google Sheets. Pastikan guru memeriksa tab Log Misi.",1)})
-    .catch(function(){say("Check-in belum dapat dikirim. Periksa koneksi internet; beri tahu guru.",0)});
+];
+
+const KERJA_SAMA = [
+  "Semua anggota mendapat giliran peran",
+  "Memberikan umpan balik positif kepada teman"
+];
+
+let nilai = [buatNilai(), buatNilai(), buatNilai(), buatNilai()];
+let posAktif = 0;
+let posTerbuka = [false, false, false, false];
+
+function buatNilai() {
+  return {
+    teknik: [false, false, false],
+    tantangan: [false, false],
+    kerja: [false, false]
+  };
 }
-function fresh(){return{t:"",n:1,g:20,r:1,c:POS.map(function(){return{cek:[0,0,0],tan:[0,0],ker:[0,0]}}),i:[0,0,0,0]}}
-try{S=JSON.parse(localStorage.getItem(K)||"null")}catch(e){S=null}
-if(!S||!S.c||S.c.length!==4||!S.i)S=fresh();
-function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
-function sum(a){return a.reduce(function(x,y){return x+y},0)}
-function pt(i){var c=S.c[i];return sum(c.cek)+sum(c.tan)+sum(c.ker)}
-function $(id){return document.getElementById(id)}
-function rute(n,r){return r===4?4:((n-1+r-1)%3)+1}
-function say(t,ok){var m=$("msg");m.textContent=t;m.className=ok?"okm":"erm"}
-function render(){
-var T=0,i;for(i=0;i<4;i++)T+=pt(i);
-$("tt").textContent=T;$("pb").style.width=Math.round(T/28*100)+"%";
-var p=$("peti"),g=+S.g;
-if(T>=g){p.className="ok";p.textContent="Peti harta terbuka! Tim mengumpulkan "+T+" kepingan emas."}
-else{p.className="";p.textContent="Peti terbuka bila terkumpul "+g+" kepingan. Kurang "+(g-T)+" lagi."}
-var rd="";for(i=1;i<=4;i++)rd+='<button data-r="'+i+'" aria-pressed="'+(i===S.r)+'">Ronde '+i+'</button>';
-$("rd").innerHTML=rd;
-var ex=rute(S.n,S.r);
-$("rt").innerHTML='Tim '+S.n+(S.t?' ('+S.t.replace(/</g,"&lt;")+')':"")+', ronde '+S.r+': <b>Pos '+ex+' '+POS[ex-1].n+'</b> '+(S.i[ex-1]?'<span class="okm">(sudah masuk)</span>':'(pindai kode pos untuk masuk)');
-var m="";
-for(i=0;i<4;i++){var x=XY[i][0],y=XY[i][1],n=pt(i),d=n===7;
-m+='<g class="nd" tabindex="0" role="button" data-i="'+i+'" aria-label="Pos '+(i+1)+' '+POS[i].n+', '+n+' dari 7 emas"><circle class="m" cx="'+x+'" cy="'+y+'" r="26" fill="'+(d?"var(--gold)":"var(--teal)")+'" stroke="'+(i+1===ex?"var(--org)":"var(--br)")+'" stroke-width="'+(i===cur?5:(i+1===ex?4:2))+'"/><text x="'+x+'" y="'+(y+7)+'" text-anchor="middle" font-size="22" font-weight="700" fill="'+(d?"#2B1D10":"#fff")+'">'+(i+1)+'</text><text x="'+x+'" y="'+(y+LB[i])+'" text-anchor="middle" font-size="13" font-weight="600" fill="var(--tx)">'+POS[i].n+'</text><text x="'+x+'" y="'+(y+LB[i]+15)+'" text-anchor="middle" font-size="12" fill="var(--mu)">'+n+'/7 emas</text></g>'}
-$("mp").innerHTML=m;
-var tb="";for(i=0;i<4;i++)tb+='<button data-i="'+i+'" aria-pressed="'+(i===cur)+'">'+(i+1)+" "+POS[i].s+"</button>";
-$("tabs").innerHTML=tb;
-var c=S.c[cur],P=POS[cur];
-if(!S.i[cur]){$("pn").innerHTML='<h2>Pos '+(cur+1)+': '+P.n+'</h2><p style="color:var(--mu);margin:6px 0 0">Daftar nilai terkunci. Pindai atau ketik kode pos ini untuk membukanya.</p>'}
-else{
-function grp(k,title,arr,max){var h='<h3><span>'+title+'</span><span>'+sum(c[k])+'/'+max+'</span></h3>';
-arr.forEach(function(t,j){h+='<label class="ck"><input type="checkbox" data-k="'+k+'" data-j="'+j+'"'+(c[k][j]?" checked":"")+'><span>'+t+'</span></label>'});return h}
-$("pn").innerHTML='<h2>Pos '+(cur+1)+': '+P.n+'</h2><div style="color:var(--mu);font-size:14px">'+pt(cur)+' dari 7 kepingan</div>'+grp("cek","Cek teknik",P.cek,3)+grp("tan","Tantangan tercapai",P.tan,2)+grp("ker","Kerja sama tim",KER,2)}
-var rk="";for(i=0;i<4;i++){var q=S.c[i];rk+='<tr><td>'+(i+1)+' '+POS[i].s+(S.i[i]?"":" (belum)")+'</td><td>'+sum(q.cek)+'/3</td><td>'+sum(q.tan)+'/2</td><td>'+sum(q.ker)+'/2</td><td><b>'+pt(i)+'/7</b></td></tr>'}
-$("rk").innerHTML=rk;
+
+function totalPos(i) {
+  const n = nilai[i];
+
+  return n.teknik.filter(Boolean).length +
+         n.tantangan.filter(Boolean).length +
+         n.kerja.filter(Boolean).length;
 }
-function norm(s){s=String(s||"").trim();try{if(/^https?:\/\//i.test(s)){var u=new URL(s);var qp=u.searchParams.get("pos");if(qp && /^[1-4]$/.test(qp))return "AZTEC-POS-"+qp;}}catch(e){}s=s.toUpperCase();if(/^[1-4]$/.test(s))s="AZTEC-POS-"+s;return s}
-function proses(raw){
-if(!String(S.t||"").trim()){say("Masukkan nama tim terlebih dahulu sebelum memindai QR.",0);$("tim").focus();return}
-var m=/^AZTEC-POS-([1-4])$/.exec(norm(raw));
-if(!m){say("Kode tidak dikenali. Pakai kode yang tertempel di pos.",0);return}
-var p=+m[1],ex=rute(S.n,S.r);
-if(p!==ex){say("Ini kode Pos "+p+". Rute tim "+S.n+" pada ronde "+S.r+" adalah Pos "+ex+" ("+POS[ex-1].n+").",0);return}
-S.i[p-1]=1;cur=p-1;save();say("Berhasil masuk Pos "+p+": "+POS[p-1].n+". Mengirim check-in…",1);render();kirimLog(p,"checkin")
+
+function totalSemua() {
+  return nilai.reduce((sum, _, i) => sum + totalPos(i), 0);
 }
-function stop(){if(tmr){clearInterval(tmr);tmr=null}if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}$("vd").style.display="none";$("st").style.display="none"}
-function scan(){
-if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.BarcodeDetector){say("Pemindai tidak didukung di peramban ini. Pindai dengan kamera bawaan lalu ketik kodenya di kolom di bawah.",0);return}
-var det;try{det=new BarcodeDetector({formats:["qr_code"]})}catch(e){say("Pemindai tidak tersedia. Ketik kode pos secara manual.",0);return}
-navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}}).then(function(s){
-stream=s;var v=$("vd");v.srcObject=s;v.style.display="block";$("st").style.display="inline-block";v.play();say("Arahkan kamera ke kode QR pos.",1);
-tmr=setInterval(function(){det.detect(v).then(function(r){if(r.length){var val=r[0].rawValue;stop();proses(val)}}).catch(function(){})},500)
-}).catch(function(){say("Kamera tidak bisa dibuka. Izinkan kamera, atau ketik kode pos secara manual.",0)})}
-document.addEventListener("click",function(e){
-var n=e.target.closest("[data-i]");if(n){cur=+n.getAttribute("data-i");render();return}
-var r=e.target.closest("[data-r]");if(r){S.r=+r.getAttribute("data-r");save();render()}
+
+function tampilPesan(teks, sukses) {
+  const el = document.getElementById("pesan");
+  el.textContent = teks;
+  el.className = "message " + (sukses ? "success" : "error");
+}
+
+function buatDaftarPos() {
+  const el = document.getElementById("daftarPos");
+  el.innerHTML = "";
+
+  POS.forEach((pos, i) => {
+    const btn = document.createElement("button");
+
+    btn.className = "pos-button" + (i === posAktif ? " active" : "");
+    btn.textContent =
+      (i + 1) + ". " + pos.nama +
+      " — " + totalPos(i) + "/7 emas";
+
+    btn.addEventListener("click", function() {
+      posAktif = i;
+      tampilkanPenilaian();
+      buatDaftarPos();
+    });
+
+    el.appendChild(btn);
+  });
+}
+
+function buatChecklist(kunci, judul, daftar) {
+  const wadah = document.createElement("div");
+  const heading = document.createElement("h3");
+
+  heading.textContent = judul;
+  wadah.appendChild(heading);
+
+  daftar.forEach((teks, i) => {
+    const label = document.createElement("label");
+    label.className = "check";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = nilai[posAktif][kunci][i];
+
+    checkbox.addEventListener("change", function() {
+      nilai[posAktif][kunci][i] = checkbox.checked;
+      tampilkanPenilaian();
+      buatDaftarPos();
+      perbaruiTotal();
+    });
+
+    const span = document.createElement("span");
+    span.textContent = teks;
+
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    wadah.appendChild(label);
+  });
+
+  return wadah;
+}
+
+function tampilkanPenilaian() {
+  const pos = POS[posAktif];
+
+  document.getElementById("judulPos").textContent =
+    "Pos " + (posAktif + 1) + ": " + pos.nama;
+
+  document.getElementById("deskripsiPos").textContent =
+    "Nilai maksimal pos ini adalah 7 kepingan emas.";
+
+  const wadah = document.getElementById("penilaian");
+  wadah.innerHTML = "";
+
+  wadah.appendChild(
+    buatChecklist("teknik", "Cek Teknik (maksimal 3)", pos.teknik)
+  );
+
+  wadah.appendChild(
+    buatChecklist("tantangan", "Tantangan (maksimal 2)", pos.tantangan)
+  );
+
+  wadah.appendChild(
+    buatChecklist("kerja", "Kerja Sama (maksimal 2)", KERJA_SAMA)
+  );
+}
+
+function perbaruiTotal() {
+  const total = totalSemua();
+  const target = Number(document.getElementById("target").value);
+
+  document.getElementById("total").textContent = total;
+
+  document.getElementById("progressBar").style.width =
+    (total / 28 * 100) + "%";
+
+  const status = document.getElementById("statusPeti");
+
+  if (total >= target) {
+    status.textContent =
+      "🎉 Peti harta terbuka! Tim memperoleh " + total + " kepingan emas.";
+  } else {
+    status.textContent =
+      "Peti terbuka setelah mencapai " + target +
+      " kepingan emas. Kurang " + (target - total) + " lagi.";
+  }
+
+  const rekap = document.getElementById("rekap");
+  rekap.innerHTML = "";
+
+  POS.forEach((pos, i) => {
+    const tr = document.createElement("tr");
+
+    const data = [
+      pos.nama,
+      nilai[i].teknik.filter(Boolean).length + "/3",
+      nilai[i].tantangan.filter(Boolean).length + "/2",
+      nilai[i].kerja.filter(Boolean).length + "/2",
+      totalPos(i) + "/7"
+    ];
+
+    data.forEach(teks => {
+      const td = document.createElement("td");
+      td.textContent = teks;
+      tr.appendChild(td);
+    });
+
+    rekap.appendChild(tr);
+  });
+}
+
+async function kirimKeGoogleSheets(posIndex) {
+  const namaTim = document.getElementById("tim").value.trim();
+  const nomorTim = Number(document.getElementById("nomorTim").value);
+
+  if (!namaTim) {
+    tampilPesan("Masukkan nama tim terlebih dahulu.", false);
+    document.getElementById("tim").focus();
+    return;
+  }
+
+  if (!posTerbuka[posIndex]) {
+    tampilPesan(
+      "Buka pos menggunakan kode pos sebelum mengirim nilai.",
+      false
+    );
+    return;
+  }
+
+  if (
+    !GOOGLE_SCRIPT_URL.startsWith(
+      "https://script.google.com/macros/s/"
+    ) ||
+    !GOOGLE_SCRIPT_URL.endsWith("/exec")
+  ) {
+    tampilPesan(
+      "URL Web App belum diisi. Masukkan URL Apps Script pada index.html.",
+      false
+    );
+    return;
+  }
+
+  const payload = {
+    action: "score",
+    teamName: namaTim,
+    teamNo: nomorTim,
+    pos: String(posIndex + 1),
+    session: SESSION,
+    score: totalPos(posIndex)
+  };
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    tampilPesan(
+      "Permintaan pengiriman nilai sudah dilakukan. Periksa tab Nilai Otomatis di Google Sheets untuk memastikan data masuk.",
+      true
+    );
+
+  } catch (err) {
+    tampilPesan(
+      "Pengiriman gagal. Periksa koneksi internet dan URL Apps Script.",
+      false
+    );
+  }
+}
+
+function cekKodePos(kode) {
+  const bersih = String(kode || "").trim().toUpperCase();
+  const cocok = bersih.match(/^AZTEC-POS-([1-4])$/);
+
+  if (!cocok) {
+    tampilPesan(
+      "Kode tidak dikenali. Gunakan AZTEC-POS-1 sampai AZTEC-POS-4.",
+      false
+    );
+    return;
+  }
+
+  const p = Number(cocok[1]) - 1;
+
+  posTerbuka[p] = true;
+  posAktif = p;
+
+  tampilkanPenilaian();
+  buatDaftarPos();
+  perbaruiTotal();
+
+  tampilPesan(
+    "Berhasil membuka Pos " + (p + 1) + ": " + POS[p].nama,
+    true
+  );
+}
+
+document.getElementById("simpanNilai").addEventListener("click", function() {
+  kirimKeGoogleSheets(posAktif);
 });
-document.addEventListener("keydown",function(e){
-if(e.key!=="Enter"&&e.key!==" ")return;var n=e.target.closest&&e.target.closest("g.nd");if(n){e.preventDefault();cur=+n.getAttribute("data-i");render();var f=document.querySelector('g.nd[data-i="'+cur+'"]');if(f)f.focus()}});
-$("pn").addEventListener("change",function(e){var t=e.target;if(t.type!=="checkbox")return;S.c[cur][t.getAttribute("data-k")][+t.getAttribute("data-j")]=t.checked?1:0;save();render()});
-$("tim").addEventListener("input",function(e){S.t=e.target.value;save()});
-$("tim").addEventListener("change",render);
-$("nt").addEventListener("change",function(e){S.n=+e.target.value;S.i=[0,0,0,0];save();say("",1);render()});
-$("tg").addEventListener("change",function(e){S.g=+e.target.value;save();render()});
-$("sc").addEventListener("click",function(){stop();scan()});
-$("st").addEventListener("click",stop);
-$("ck").addEventListener("click",function(){proses($("kd").value);$("kd").value=""});
-$("kd").addEventListener("keydown",function(e){if(e.key==="Enter"){proses($("kd").value);$("kd").value=""}});
-$("rs").addEventListener("click",function(){$("cf").style.display="inline";$("rs").style.display="none"});
-$("tb").addEventListener("click",function(){$("cf").style.display="none";$("rs").style.display="inline-block"});
-$("ya").addEventListener("click",function(){stop();S=fresh();save();$("tim").value="";$("nt").value="1";$("tg").value="20";cur=0;say("",1);$("cf").style.display="none";$("rs").style.display="inline-block";render()});
-var o="";for(var a=1;a<=6;a++)o+='<option value="'+a+'">'+a+'</option>';$("nt").innerHTML=o;
-var qg="";for(a=1;a<=4;a++){var q=QR["AZTEC-POS-"+a],pv="";var sz=q.n+4;qg+='<div><svg viewBox="0 0 '+sz+' '+sz+'" role="img" aria-label="Kode QR Pos '+a+'" shape-rendering="crispEdges"><rect width="'+sz+'" height="'+sz+'" fill="#fff"/><path transform="translate(2 2)" d="'+q.d+'" fill="#000"/></svg>Pos '+a+': '+POS[a-1].n+'<br><b>AZTEC-POS-'+a+'</b></div>'}
-$("qg").innerHTML=qg;
-var ru="";for(var t=1;t<=6;t++){ru+='<tr><td>Tim '+t+'</td>';for(var r=1;r<=4;r++)ru+='<td>Pos '+rute(t,r)+'</td>';ru+='</tr>'}
-$("ru").innerHTML=ru;
-$("tim").value=S.t||"";$("nt").value=String(S.n||1);$("tg").value=String(S.g||20);
-render();
-// Jika QR pos dibuka sebagai URL ?pos=1..4, siapkan kode pos setelah halaman termuat.
-try{var qp=new URL(location.href).searchParams.get("pos");if(qp && /^[1-4]$/.test(qp)){$("kd").value="AZTEC-POS-"+qp;say("QR Pos "+qp+" terdeteksi. Masukkan nama tim, pilih ronde yang sesuai, lalu tekan Cek kode.",1)}}catch(e){}
+
+document.getElementById("target").addEventListener("change", perbaruiTotal);
+
+// Membuat kode QR untuk setiap pos.
+// QR berisi teks AZTEC-POS-1, AZTEC-POS-2, dan seterusnya.
+function buatQR() {
+  const wadah = document.getElementById("daftarQR");
+
+  POS.forEach((pos, i) => {
+    const kode = "AZTEC-POS-" + (i + 1);
+    const box = document.createElement("div");
+
+    box.className = "qr-box";
+
+    const img = document.createElement("img");
+
+    img.alt = "QR " + kode;
+    img.loading = "lazy";
+    img.src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
+      encodeURIComponent(kode);
+
+    const nama = document.createElement("p");
+    nama.textContent = pos.nama;
+
+    const kodeTeks = document.createElement("strong");
+    kodeTeks.textContent = kode;
+
+    box.appendChild(img);
+    box.appendChild(nama);
+    box.appendChild(kodeTeks);
+
+    wadah.appendChild(box);
+  });
+}
+
+// Inisialisasi halaman.
+buatDaftarPos();
+tampilkanPenilaian();
+perbaruiTotal();
+buatQR();
 </script>
+
 </body>
 </html>
